@@ -228,3 +228,31 @@ console.log(std.name1);
 console.log(std.name2);
 console.log(std instanceof Student);
 console.log(std instanceof Friend);
+
+// ===============================================================================================
+
+// question 11
+
+
+const obj = {
+    value: 10,
+    getValue: function () {
+      return () => {return this.value};
+    }
+  };
+  
+  const value = 20;
+  const getValue = obj.getValue();
+  console.log(getValue());//10
+
+
+//   ==========================================
+// question 12
+const obj1 = {};
+Object.defineProperty(obj1, 'length', { get: () => Math.random() });
+console.log(obj1.length);// a  random number
+
+
+
+
+
