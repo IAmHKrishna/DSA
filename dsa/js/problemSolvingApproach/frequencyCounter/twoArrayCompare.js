@@ -42,7 +42,6 @@ function same(arr1, arr2) {
         console.log("111",squared,frequencyCounter1)
 
         if (!(squared in frequencyCounter2)) {
-
             return false;
         }
         if (frequencyCounter2[squared] !== frequencyCounter1[key]) {
