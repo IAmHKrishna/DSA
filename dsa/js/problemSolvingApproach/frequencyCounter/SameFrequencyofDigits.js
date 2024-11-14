@@ -3,9 +3,23 @@
 
 
 
+function sameFrequency(num1,num2){
+        let frequencyNum1 ={}
+        for(let num of `${num1}`){
+            frequencyNum1[num]=(frequencyNum1[num]||0) +1
+        }
+        for(let num of `${num2}`){
+            if(!frequencyNum1[num]) return false
+            if(frequencyNum1[num]) frequencyNum1[num] -=1
+        }
+        return true
+}
+
+
+
 
 // test cases
 
-sameFrequency(182, 281) // true
-sameFrequency(34, 14)   // false
-sameFrequency(3589578, 5879385) // true
+console.log(sameFrequency(182, 281)) // true
+console.log(sameFrequency(34, 14))   // false
+console.log(sameFrequency(3589578, 5879385)) // true

@@ -2,9 +2,11 @@
 
 [text](frequencyPattern/mergeTwojson.js)
 
+
 <!-- FREQUENCY COUNTERS -->
 [text](frequencyPattern/twoArrayCompare.js)
 [Anagrams](frequencyCounter/anagrams.js)
+[Character Frequency Sorting](<frequencyCounter/451)CharacterFrequencySorting.js>)
 
 
 <!-- MULTIPLE POINTERS -->
@@ -22,3 +24,8 @@ The Multiple Pointers pattern is a technique used to solve problems where you ha
 This pattern involves dividing a data set into smaller chunks and then repeating
 a process with a subset of data.
 This pattern can tremendously decrease time complexity
+
+
+<!-- bucket sort approach -->
+
+[example 3](<frequencyCounter/451)CharacterFrequencySorting.js>)
