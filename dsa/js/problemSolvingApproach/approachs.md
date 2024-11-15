@@ -29,3 +29,8 @@ This pattern can tremendously decrease time complexity
 <!-- bucket sort approach -->
 
 [example 3](<frequencyCounter/451)CharacterFrequencySorting.js>)
+
+
+
+<!-- Boyer-Moore Voting Algorithm -->
+[solution 3](<frequencyCounter/169)MajorityElement.js>)
