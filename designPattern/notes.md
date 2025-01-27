@@ -1,3 +1,4 @@
+https://docs.google.com/document/d/1A63iaMJQ7Hb1uT2ZVRYXNmq-99h1OmYPFviRxpx6R6k/edit?tab=t.jawe9y79ldsc
 topic 
 ================
     1) Module //encapsulation
@@ -5,6 +6,7 @@ topic
     3) Observer 
     4) Factory
     5) Adopter
+    6) Bridge
 
 **1) Module Pattern:**
 

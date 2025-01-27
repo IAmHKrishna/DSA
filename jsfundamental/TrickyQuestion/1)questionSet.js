@@ -254,5 +254,42 @@ console.log(obj1.length);// a  random number
 
 
 
+// question 13
+function sum(a, b, callback) {
+    console.log(a + b);
+    callback(a, b, msg);
+}
+function sub(x, y, callback) {
+    console.log(x - y);
+    
+}
+function msg() {
+    console.log('End');
+}
+sum(10, 5, sub);
+
+// output- 15
+var obj1 = {
+    firstName: "",
+    lastName: ""
+}
+ 
+function getFullName(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    obj1.firstName = firstName;
+    obj1.lastName = lastName;
+    getResult();
+}
+ 
+function getResult() {
+    console.log(this.firstName + " " + this.lastName);
+    console.log(obj1.firstName + " " + obj1.lastName);
+}
+ 
+getFullName("Rajesh", "Singh");
+
+
+
 
 

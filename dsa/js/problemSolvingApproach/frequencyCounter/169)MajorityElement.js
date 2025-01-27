@@ -49,6 +49,28 @@ var majorityElement = function(nums) {
 //   return result;
 // };
 
+var majorityElement = function(nums) {
+  let count = 0;
+  let result = null;
+
+  // First pass to find a candidate
+  for (let num of nums) {
+    if (count === 0) result = num;
+    count += (num === result) ? 1 : -1;
+  }
+
+  // Second pass to validate the candidate
+  count = 0;
+  for (let num of nums) {
+    if (num === result) count++;
+  }
+
+  return count > Math.floor(nums.length / 2) ? result : null;
+};
+
+console.log(majorityElement([3, 2, 3, 2, 1])); // Output: null
+console.log(majorityElement([1, 1, 1, 3, 3, 2, 2, 2])); // Output: null
+
 // https://docs.google.com/document/d/1A63iaMJQ7Hb1uT2ZVRYXNmq-99h1OmYPFviRxpx6R6k/edit?usp=sharing
 // Boyer-Moore Voting Algorithm
 // function majorityElement(nums) {
