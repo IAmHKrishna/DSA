@@ -9,6 +9,7 @@ function selectionSort(arr) {
                 minIndex = j;
             }
         }
+        console.log(minIndex)
         // Swap the found minimum element with the first element
         if (minIndex !== i) {
             let temp = arr[i];
