@@ -81,12 +81,10 @@ Mixins allow you to combine multiple behaviors into a class. This is helpful whe
 
 
 Encapsulation vs Abstraction in JavaScript
-1. Encapsulation Encapsulation refers to the bundling of data (variables) and methods (functions) that operate on the data into a single unit (object). It restricts direct access to some of an object’s components, which can help prevent accidental modification of data. In JavaScript, encapsulation is typically achieved using closures or private class fields.
+1. Encapsulation refers to the bundling of data (variables) and methods (functions) that operate on the data into a single unit (object). It restricts direct access to some of an object’s components, which can help prevent accidental modification of data. In JavaScript, encapsulation is typically achieved using closures or private class fields.
 
 Example:
 
-javascript
-Copy code
 class Person {
   // Encapsulation using private fields
   #name;
