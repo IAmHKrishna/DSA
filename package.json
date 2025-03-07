@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/IAmHKrishna/DSA#readme",
   "dependencies": {
+    "axios": "^1.8.1",
     "cookie-parser": "^1.4.7",
     "express": "^4.21.2",
     "hbs": "^4.2.0",
