@@ -1,4 +1,4 @@
-// https://docs.google.com/document/d/1A63iaMJQ7Hb1uT2ZVRYXNmq-99h1OmYPFviRxpx6R6k/edit?usp=sharing
+// https://docs.google.com/document/d/1A63iaMJQ7Hb1uT2ZVRYXNmq-99h1OmYPFviRxpx6R6k/edit?tab=t.nzlfbsw29y3z
 
 // Implementor interface
 class Device {

@@ -60,7 +60,7 @@ console.log(mySet2.size); // 3
 // forEach(callback): Executes a callback function for each element in the Set.
 
 
-mySet.forEach(value => console.log(value));
+mySet2.forEach(value => console.log(value));
 // keys(), values(), and entries():
 
 // keys() and values() both return the values in the Set (they are identical in Set because there are no keys).

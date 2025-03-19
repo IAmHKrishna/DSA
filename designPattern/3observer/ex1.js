@@ -28,6 +28,8 @@ const observer2 = new Observer();
 
 subject.addObserver(observer1);
 subject.addObserver(observer2);
+// subject.removeObserver(observer1);
+subject.notifyObservers("Initial state");
 
 subject.notifyObservers("State changed!");
 // Output: 
