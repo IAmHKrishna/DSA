@@ -23,3 +23,8 @@ async function streamLogs() {
   
   streamLogs();
   
+
+  // db.createCollection("api_logs", { capped: true, size: 1048576, max: 1000 })
+
+//   db.logs.find().sort({ $natural: 1 })  // Oldest to newest
+// db.logs.find().sort({ $natural: -1 }) // Newest to oldest

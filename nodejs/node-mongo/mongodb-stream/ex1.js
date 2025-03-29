@@ -1,7 +1,7 @@
 const {MongoClient} = require('mongodb');
 
 // const client = new MongoClient("mongodb://localhost:27017");
-const client = new MongoClient("mongodb://localhost:27017/?replicaSet=rs0");
+const client = new MongoClient("mongodb://mongo1:27017,mongo2:27017,mongo3:27017/mydb?replicaSet=rs0");
 
 async function watchChanges() {
     await client.connect();

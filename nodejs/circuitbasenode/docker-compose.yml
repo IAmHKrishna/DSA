@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672" 
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - app-network
+
+  # Redis for caching and rate limiting
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+
+  # MongoDB for persistent storage
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - app-network
+
+  # API Gateway
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+    depends_on:
+      - rabbitmq
+      - redis
+      - service-auth
+      - service-products
+
+  # Auth Service
+  service-auth:
+    build: ./service-auth
+    ports:
+      - "4000:4000"
+    networks:
+      - app-network
+    depends_on:
+      - rabbitmq
+      - redis
+      - mongo
+
+  # Products Service
+  service-products:
+    build: ./service-products
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+    depends_on:
+      - rabbitmq
+      - redis
+      - mongo
+
+networks:
+  app-network:
+    driver: bridge
