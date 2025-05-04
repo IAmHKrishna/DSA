@@ -21,11 +21,11 @@ class Observer {
 const observer = new Observer();
 
 
-observer.suscribe({
-    update(message) {
-        console.log(message);
-    }
-});
+// observer.suscribe({
+//     update(message) {
+//         console.log(message);
+//     }
+// });
 
 // observer.notifySubscribers("Hello");
 

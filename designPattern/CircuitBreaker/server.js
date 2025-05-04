@@ -14,6 +14,7 @@ app.get('/unstable-service', async (req, res) => {
         }
         res.send('Service is working');
     } catch (error) {
+        console.log(error)
         res.status(500).send('Service failed');
     }
 });

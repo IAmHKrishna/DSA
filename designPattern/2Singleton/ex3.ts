@@ -18,11 +18,11 @@ class Singleton1 {
      * keeping just one instance of each subclass around.
      */
     public static get instance(): Singleton1 {
-        if (!Singleton.#instance) {
-            Singleton.#instance = new Singleton1();
+        if (!Singleton1.#instance) {
+            Singleton1.#instance = new Singleton1();
         }
 
-        return Singleton.#instance;
+        return Singleton1.#instance;
     }
 
     /**
@@ -38,8 +38,8 @@ class Singleton1 {
  * The client code.
  */
 function clientCode() {
-    const s1 = Singleton.instance;
-    const s2 = Singleton.instance;
+    const s1 = Singleton1.instance;
+    const s2 = Singleton1.instance;
 
     if (s1 === s2) {
         console.log(

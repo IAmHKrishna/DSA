@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { Readable, Writable, Transform, pipeline } = require('stream');
-const downloadBadWayfile = (req, res) => {
+const downloadBadWayfile = (req, res) => {  //Downloading big files from server ( a bad way)
     const file = fs.readFileSync('sample.txt');
     return res.end(file);
 }
@@ -23,7 +23,7 @@ const donloadGoodWayVideoFile = (req, res) => {
     return file.pipe(res);
 }
 
-const copyBigFileUsingBadWay = (req, res) => {
+const copyBigFileUsingBadWay = (req, res) => {//bad way
     const file = fs.readFileSync('sample.txt');
     fs.writeFileSync('output.txt', file);
     return res.end();
@@ -35,7 +35,7 @@ const copyBigFileUsingGoodWay = (req, res) => {
     file.pipe(writeStream);
     return res.end();
 }
-const copyBigFilebetterWay = (req, res) => {
+const copyBigFilebetterWay = (req, res) => { //Duplex example
     const readStream = fs.createReadStream('sample.txt');
     const writeStream = fs.createWriteStream("output.txt");
     readStream.on("data", (chunk) => {
@@ -56,7 +56,7 @@ const createReadableCustomStream = (req, res) => {
 }
 
 
-const createReadableWriteableCustomStream = (req, res) => {
+const createReadableWriteableCustomStream = (req, res) => { //Duplex
     const readableStream = new Readable({
         highWaterMark: 2,
         read() { }
@@ -108,7 +108,10 @@ const fileStringProcess = (req, res) => {
         writeableStream.write(finalString);
     })
     // readableStream.pipe(writeableStream);
-    return res.end();
+    readableStream.on("end", () => {
+        console.log("File processed successfully!");
+    })
+    return res.end('File processed successfully!\n');
 }
 
 

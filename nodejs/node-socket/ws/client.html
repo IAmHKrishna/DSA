@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client</title>
+</head>
+
+<body>
+    <h2>WebSocket Client</h2>
+    <input type="text" id="messageInput" placeholder="Enter message">
+    <button onclick="sendMessage()">Send</button>
+    <ul id="messages"></ul>
+
+    <script>
+        const ws = new WebSocket("ws://localhost:8081");
+
+        ws.onopen = () => {
+            console.log("Connected to WebSocket server");
+        };
+
+        ws.onmessage = async (event) => {
+            console.log("Received:", event.data);
+            const data = event.data;
+            const li = document.createElement("li");
+
+            if (data instanceof Blob) {
+                const text = await data.text();
+                console.log('conveted blob to text and Received text:', text);
+                li.textContent = text;
+
+                // If it's JSON:
+                try {
+                    const json = JSON.parse(text);
+                    console.log('Parsed JSON:', json);
+                } catch (e) {
+                    console.log('Not a valid JSON string.');
+                }
+            } else {
+                console.log('Received non-blob data:', data);
+                li.textContent = event.data;
+            }
+            document.getElementById("messages").appendChild(li);
+        };
+
+        function sendMessage() {
+            const message = document.getElementById("messageInput").value;
+            ws.send(message);
+        }
+    </script>
+</body>
+
+</html>

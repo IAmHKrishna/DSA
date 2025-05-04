@@ -289,6 +289,11 @@ function getResult() {
  
 getFullName("Rajesh", "Singh");
 
+// =================================================
+(function test() {
+    console.log(void (p = 1 / ""), p); //undefined Infinity
+})()
+
 
 
 

@@ -24,17 +24,17 @@ const server = http.createServer((req, res) => {
     // =============================================
     // donload good way fole
     // donloadGoodWayFile(req, res);
-
+// =============================================
     // copyBigFileUsingBadWay(req, res);
     // copyBigFileUsingGoodWay(req, res);
     // copyBigFilebetterWay(req, res);
     // createReadableCustomStream(req, res);
     // createReadableWriteableCustomStream(req, res);
     // createReadableWriteableWithObjCustomStream(req, res);
-    // fileStringProcess(req, res);
+    fileStringProcess(req, res);
     //   fileStringProcessWithPipe(req, res);
     //   fileStringProcessWithErrorHandling(req, res);
-    fileProcessingWithBetterErrorHandling(req, res);
+    // fileProcessingWithBetterErrorHandling(req, res);
 
 
 });

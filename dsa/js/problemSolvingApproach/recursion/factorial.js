@@ -11,4 +11,16 @@ function factorial(num) {
 //     }
 //     return total
 // }
+
+function getFactorial(numStr) {
+  let num = Number(numStr);
+  let total = 1;
+
+  for (let i = 2; i <= num; i++) {
+      total *= i;
+  }
+
+  console.log(total);
+}
+
 console.log(factorial(5)); // Output: 120

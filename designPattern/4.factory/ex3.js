@@ -22,4 +22,4 @@ class User {
     email: "jane@doe.com",
   });
   console.log(user1);
-//   console.log(user2.fullName());
+  // console.log(user2.fullName());

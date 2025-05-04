@@ -26,16 +26,16 @@ const myMap = new Map([
 
 // Using forEach Method
 myMap.forEach((value, key) => {
-    console.log(`${key}: ${value}`);
+    console.log(`333${key}: ${value}`);
   });
 
 
 //   Using for...of Loop
 for (const [key, value] of myMap.entries()) {
-    console.log(`${key}: ${value}`);
+    console.log(`222${key}: ${value}`);
 }
 for (const [key, value] of myMap) {
-    console.log(`${key}: ${value}`);
+    console.log(`111${key}: ${value}`);
   }
 
 //   3. Other Methods to Display Entries
