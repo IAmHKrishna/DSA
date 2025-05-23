@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="UserApp">
+<head>
+  <title>AngularJS CRUD</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="UserController">
+
+  <h2>User List</h2>
+  <ul>
+    <li ng-repeat="user in users">
+      {{ user.name }} - {{ user.email }}
+      <button ng-click="editUser(user)">Edit</button>
+      <button ng-click="deleteUser(user._id)">Delete</button>
+    </li>
+  </ul>
+
+  <h3>{{ isEdit ? 'Update' : 'Create' }} User</h3>
+  <form ng-submit="isEdit ? updateUser() : createUser()">
+    <input type="text" ng-model="formData.name" placeholder="Name" required>
+    <input type="email" ng-model="formData.email" placeholder="Email" required>
+    <button type="submit">{{ isEdit ? 'Update' : 'Create' }}</button>
+  </form>
+
+  <script>
+    const app = angular.module('UserApp', []);
+
+    app.controller('UserController', function($scope, $http) {
+      const API_URL = 'https://example.com/api/users';
+
+      $scope.users = [];
+      $scope.formData = {};
+      $scope.isEdit = false;
+
+      // Read (GET all users)
+      $scope.getUsers = function() {
+        $http.get(API_URL).then(res => {
+          $scope.users = res.data;
+        });
+      };
+
+      // Create (POST new user)
+      $scope.createUser = function() {
+        $http.post(API_URL, $scope.formData).then(res => {
+          $scope.formData = {};
+          $scope.getUsers();
+        });
+      };
+
+      // Edit button (prefill form)
+      $scope.editUser = function(user) {
+        $scope.formData = angular.copy(user);
+        $scope.isEdit = true;
+      };
+
+      // Update (PUT)
+      $scope.updateUser = function() {
+        $http.put(`${API_URL}/${$scope.formData._id}`, $scope.formData).then(res => {
+          $scope.formData = {};
+          $scope.isEdit = false;
+          $scope.getUsers();
+        });
+      };
+
+      // Delete (DELETE)
+      $scope.deleteUser = function(id) {
+        $http.delete(`${API_URL}/${id}`).then(res => {
+          $scope.getUsers();
+        });
+      };
+
+      // Initialize
+      $scope.getUsers();
+    });
+  </script>
+</body>
+</html>

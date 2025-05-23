@@ -4,6 +4,7 @@ const {MongoClient} = require('mongodb');
 const client = new MongoClient("mongodb://localhost:27017/?replicaSet=rs0");
 client.connect();
 async function  transferMoney(fromId, toId, amount) {
+    console.log("🚀 Starting Transaction");
     const session = client.startSession();
     try {
         await session.withTransaction(async () => {

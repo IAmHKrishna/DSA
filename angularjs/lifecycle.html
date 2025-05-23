@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS Lifecycle Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="MainController">
+
+  <h2>AngularJS Lifecycle</h2>
+  <input ng-model="message" />
+  <p>{{ message }}</p>
+
+  <script>
+    // Step 1: Module creation
+    var app = angular.module('myApp', []);
+
+    // Step 2: Configuration block (executed before controllers/services run)
+    app.config(function () {
+      console.log("CONFIG: App configuration executed");
+    });
+
+    // Step 3: Run block (executed after injector is created)
+    app.run(function () {
+      console.log("RUN: App is running now");
+    });
+
+    // Step 4: Controller creation
+    app.controller('MainController', function ($scope) {
+      console.log("CONTROLLER: MainController initialized");
+
+      $scope.message = "Hello AngularJS";
+
+      // A watcher to demonstrate digest cycle
+      $scope.$watch('message', function (newVal, oldVal) {
+        if (newVal !== oldVal) {
+          console.log("WATCHER: message changed from", oldVal, "to", newVal);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

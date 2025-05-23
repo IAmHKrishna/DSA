@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="apiApp">
+<head>
+  <meta charset="UTF-8">
+  <title>AngularJS API Call Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+<body ng-controller="UserCtrl">
+
+  <h2>User List</h2>
+  <ul>
+    <li ng-repeat="user in users">
+      {{ user.name }} - {{ user.email }}
+    </li>
+  </ul>
+
+</body>
+</html>

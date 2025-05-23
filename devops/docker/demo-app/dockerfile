@@ -1,0 +1,18 @@
+# Use an official Node.js runtime as a base image
+FROM node:18-alpine
+
+# Set the working directory
+WORKDIR /home/terotam/learning-ws/algo/devops/docker/demo-app
+
+# Copy your JS file into the container
+COPY app.js .
+
+# Define the default command to run the app
+CMD ["node", "app.js"]
+
+# Build the Docker image
+# docker build -t my-node-app .
+
+# Run the container
+# docker run --rm my-node-app
+# docker run -e name=krishna js-app:latest  => environment variable

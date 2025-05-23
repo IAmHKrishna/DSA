@@ -10,3 +10,6 @@
 [+] Types of streams
 [+] Object mode in streams
 [+] Handle errors in stream
+
+
+https://docs.google.com/document/d/1A63iaMJQ7Hb1uT2ZVRYXNmq-99h1OmYPFviRxpx6R6k/edit?tab=t.ezf89bnqp2v8

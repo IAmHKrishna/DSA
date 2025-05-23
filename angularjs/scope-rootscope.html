@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>$scope vs $rootScope Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+  <div ng-controller="ParentController">
+    <h3>Parent Controller</h3>
+    <p>$scope message: {{ parentMessage }}</p>
+    <p>$rootScope message: {{ globalMessage }}</p>
+
+    <div ng-controller="ChildController">
+      <h4>Child Controller</h4>
+      <p>$scope message: {{ childMessage }}</p>
+      <p>$rootScope message: {{ globalMessage }}</p>
+    </div>
+  </div>
+
+  <script>
+    var app = angular.module('myApp', []);
+
+    app.run(function($rootScope) {
+      // Global variable accessible in all scopes
+      $rootScope.globalMessage = "Hello from $rootScope!";
+    });
+
+    app.controller('ParentController', function($scope) {
+      $scope.parentMessage = "Hello from Parent $scope!";
+    });
+
+    app.controller('ChildController', function($scope) {
+      $scope.childMessage = "Hello from Child $scope!";
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>AngularJS ngRoute Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+  <style>
+    nav a { margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#!/">Home</a>
+    <a href="#!/about">About</a>
+  </nav>
+
+  <div ng-view></div>
+
+  <script>
+    // Define module with ngRoute dependency
+    var app = angular.module('myApp', ['ngRoute']);
+
+    // Configuration block for routes
+    app.config(function($routeProvider) {
+      $routeProvider
+        .when("/", {
+          templateUrl: "home.html",
+          controller: "HomeController"
+        })
+        .when("/about", {
+          templateUrl: "about.html",
+          controller: "AboutController"
+        })
+        .otherwise({ redirectTo: "/" });
+    });
+
+    // A shared service
+    app.factory('MessageService', function() {
+      var message = "Home Shared message from service";
+      return {
+        getMessage: function() {
+          return message;
+        }
+      };
+    });
+    // service
+    app.service("HomeService",function(){
+        this.specialMsg = "from krishna"
+    })
+    // factory
+    app.factory('AbourMessageService', function() {
+      var message = "about Shared message from service";
+      return {
+        getMessage: function() {
+          return message;
+        }
+      };
+    });
+
+    // Home Controller
+    app.controller("HomeController", function($scope, MessageService,HomeService) {
+      $scope.first_name="hare"
+      $scope.title = "Home Page";
+      $scope.message = MessageService.getMessage();
+      $scope.specialMsg = HomeService.specialMsg
+      $scope.$watch("first_name",function(newVal,oldVal){
+        if (newVal !== oldVal) {
+           $scope.diff = 'WATCHER: message changed from, ' + oldVal + oldVal+ '!';
+          console.log("WATCHER: message changed from", oldVal, "to", oldVal);
+        }
+      })
+    });
+
+    // About Controller
+    app.controller("AboutController", function($scope, AbourMessageService) {
+      $scope.title = "About Page";
+      $scope.message = AbourMessageService.getMessage();
+    });
+  </script>
+
+  <!-- Inline templates -->
+  <script type="text/ng-template" id="home.html">
+    <h2>{{ title }}</h2>
+    <p>{{ message }}</p>
+    <p>{{ specialMsg }}</p>
+    <input type="text" ng-model="first_name" placeholder="type your name"/>
+    <p>{{ diff }}</p>
+  </script>
+
+  <script type="text/ng-template" id="about.html">
+    <h2>{{ title }}</h2>
+    <p>{{ message }}</p>
+  </script>
+
+</body>
+</html>

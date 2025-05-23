@@ -1,7 +1,7 @@
 // 1. Async Control Flow
 // Q: Implement a function that accepts a list of asynchronous functions and
 //  runs them in sequence.
-
+const fs = require('fs');
 function runAsyncInSequence(asyncFunctions) {
     return asyncFunctions.reduce((promise, asyncFunc) => {
         // Each async function should return a promise
@@ -222,3 +222,33 @@ const mockApiCall = (name) => () =>
     mockApiCall("API_3"),
   ];
 scheduleRequestsWithCooldown(tasks, 2000); // 2s cooldown between each
+
+// ==============================================================================================
+
+
+fs.readFile('file.txt', () => {
+  console.log('File read'); // Poll phase
+});
+
+setTimeout(() => {
+  console.log('Timeout');   // Timers phase
+}, 0);
+
+setImmediate(() => {
+  console.log('Immediate'); // Check phase
+});
+
+
+
+fs.readFile('file.txt', () => {
+  console.log('File read'); // This callback runs in the poll phase
+
+  setTimeout(() => {
+    console.log('Timeout'); // Timers phase
+  }, 0);
+
+  setImmediate(() => {
+    console.log('Immediate'); // Check phase
+  });
+});
+
